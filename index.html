@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guessing Game</title>
+    <!-- Bootstrap -->
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" >
+    <!-- Own stylesheet -->
+    <link rel="stylesheet" href="main.css">
+    <!-- Google Webfonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Guess the number</h1>
+        </div> <!-- .col-md-12 -->
+      </div> <!-- .row -->
+
+      <div class="row">
+        <div class="col-md-4">
+          <input type="text" placeholder='Try any number from 1-100' class='form-control' />
+        </div> <!-- .col-md-4 -->
+      </div> <!-- .row -->
+
+      <div class="row">
+        <div class="col-md-4">
+          <button type='button' class="btn btn-info">
+            Make a guess
+          </button>
+          <button type='button' class= 'btn btn-default'>
+            Get a hint
+          </button>
+          <button type='button' class="btn btn-default">
+            Start over
+          </button>
+        </div> <!-- .col-md-4 -->
+      </div> <!-- .row -->
+  		
+      <div class="row">
+        <div class="col-md-4">
+          <h3 id='status'>
+            <!-- container for future feedback on guesses-->
+          </h3>            
+          <h3 id='guess-count'> 5 guesses remaining </h3>
+        </div> <!-- .col-md-4 -->
+      </div> <!-- .row -->
+
+    </div> <!-- .container-fluid -->
+
+    <!-- JS and jQuery  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<script src='guess.js'></script>
+  </body>
+</html>
