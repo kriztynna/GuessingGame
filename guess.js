@@ -14,8 +14,8 @@ $(document).ready(function(){
 	$('#guessBox').on('focus', function () {$(this).val('');});
 })
 
-function checkGuess(){
-	var currGuess = +$('#guessBox').val();
+function validateInput(){
+	var input = +$('#guessBox').val();
 	var msg = "";
 	if ( guesses.indexOf(target)>-1) {
 		msg = 'You already won, silly! Let\'s get you a new game started.';
@@ -24,51 +24,68 @@ function checkGuess(){
 	else if ( guessesRemaining() < 1) {
 		msg = 'Sorry, you\'re out of guesses.';
 	}
-	else if (isNaN(currGuess) || currGuess<1 || currGuess>100) {
-		msg = ('Your guess needs to be a number between 1 and 100');
+	else if (isNaN(input) || input<1 || input>100) {
+		msg = ('Your guess needs to be a number between 1 and 100.');
 	}
-	else if(currGuess==target){
-		guesses.push(currGuess)
-		msg = 'You got it! The answer is '+target+"!";
-		$('#msg').text(msg);
-		/* Voila my creative flourish */
-		$("#list").fadeOut('slow');
-		$("#guessCounter").fadeOut('slow');
-	}
-	else if (guesses.indexOf(currGuess) > -1) {
+	else if (guesses.indexOf(input) > -1) {
 		msg = "You already guessed that, try something else."
 	}
 	else {
-		guesses.push(currGuess)
-		var status = "";
-		if (Math.abs(currGuess-target)<10) {status = "hot";}
-		else {status="cold";}
-
-		msg+= "You are "+status+". "; 
-
-		if (guesses.length>1) {
-			var progress = "";
-			/* 
-			 * Because the current guess has already been pushed to the array, its index is
-			 * guesses.length-1, and the index of the guess before it is guesses.length-2.
-			 */
-			var prevGuess = guesses[guesses.length-2];
-			if (Math.abs(currGuess-target)<Math.abs(prevGuess-target)) {progress="closer";}
-			else {progress="further away";}
-			msg+="That was "+progress+" than your last guess. "
-		}
-		
-
-		var direction = "";
-		if (currGuess<target) {direction="higher";}
-		else {direction="lower";}
-
-		msg+= "Guess "+direction+"!"
-		updateList();
-
-		if ( guessesRemaining() < 1){ msg = 'Sorry, you\'re out of guesses.';}
+		/* If none of the above, input must be valid. */
+		return input;
 	}
+	/* 
+	 * The below will only run if the input wasn't already 
+	 * returned because it was valid. 
+	 */
 	$('#msg').text(msg);
+	return false;
+}
+
+function checkGuess(){
+	var currGuess = validateInput();
+	var msg = "";
+	if (currGuess) {
+		if (currGuess==target) {
+			guesses.push(currGuess)
+			msg = 'You got it! The answer is '+target+"!";
+			$('#msg').text(msg);
+			/* Voila my creative flourish */
+			$("#list").fadeOut('slow');
+			$("#guessCounter").fadeOut('slow');
+		}
+		else {
+			guesses.push(currGuess)
+			
+			var status = "";
+			if (Math.abs(currGuess-target)<10) {status = "hot";}
+			else {status="cold";}
+
+			msg+= "You are "+status+". "; 
+
+			if (guesses.length>1) {
+				var progress = "";
+				/* 
+				 * Because the current guess has already been pushed to the array, its index is
+				 * guesses.length-1, and the index of the guess before it is guesses.length-2.
+				 */
+				var prevGuess = guesses[guesses.length-2];
+				if (Math.abs(currGuess-target)<Math.abs(prevGuess-target)) {progress="closer";}
+				else {progress="further away";}
+				msg+="That was "+progress+" than your last guess. "
+			}
+
+			var direction = "";
+			if (currGuess<target) {direction="higher";}
+			else {direction="lower";}
+
+			msg+= "Guess "+direction+"!"
+			updateList();
+
+			if ( guessesRemaining() < 1){ msg = 'Sorry, you\'re out of guesses.';}
+			$('#msg').text(msg);
+		}
+	}
 }
 
 function updateList(){
