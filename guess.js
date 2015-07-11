@@ -7,7 +7,7 @@ $(document).ready(function(){
 	target =  setTarget();
 	$('#guessButton').on('click', checkGuess);
 	$('#guessBox').on('keyup', function(e){
-		if (e.keyCode=='13') {checkGuess();$(this).val('');}
+		if (e.which==13) {checkGuess();$(this).val('');}
 	})
 	$('#startOver').on('click', startOver);
 	$('#getHint').on('click', getHint);
