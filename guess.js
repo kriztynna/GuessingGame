@@ -7,7 +7,7 @@ $(document).ready(function(){
 	target =  setTarget();
 	$('#guessButton').on('click', checkGuess);
 	$('#guessBox').on('keyup', function(e){
-		if (e.keyCode=='13') {checkGuess();}
+		if (e.keyCode=='13') {checkGuess();$(this).val('');}
 	})
 	$('#startOver').on('click', startOver);
 	$('#getHint').on('click', getHint);
@@ -143,9 +143,10 @@ function startOver() {
 	var msg = "Your game has been restarted, submit a new guess!"
 	$('#guessCounter').html("<span id='guessesRemaining'>5</span> guesses remaining")
 	$('#msg').text(msg);
+	$("#guessBox").val('');
 	/* 
 	 * We call show #list and #guessCounter again because they will have been
-	 * hidden if "Start Over" has been clicked.
+	 * hidden if the game has been won.
 	 */
 	$('#list').show();
 	$('#guessCounter').show();
