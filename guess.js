@@ -199,11 +199,12 @@ function startOver() {
 	$('#guessCounter').html("<span id='guessesRemaining'>5</span> guesses remaining")
 	$('#msg').text("Your game has been restarted, submit a new guess!");
 	/* 
-	 * Call show() on #list and #guessCounter because they 
-	 * will have been hidden if the game has been won.
+	 * Set opacity to 1 on #list and #guessCounter because it 
+	 * will have been set to 0 if game has been won.
+	 * See use of fadeTo() in checkGuess function.
 	 */
-	$('#list').show();
-	$('#guessCounter').show();
+	$('#list').css('opacity',1);
+	$('#guessCounter').css('opacity',1);
 	/* 
 	 * Sets Start Over button color back to normal because 
 	 * it could have been turned green earlier.
