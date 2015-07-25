@@ -33,7 +33,6 @@ function validateInput(){
 	var msg = "";
 	if ( guesses.indexOf(target)>-1) {
 		msg = 'You already won, silly! Let\'s get you a new game started.';
-		$("#startOver").addClass("btn-success");
 	}
 	else if ( guessesRemaining() < 1) {
 		msg = 'Sorry, you\'re out of guesses.';
@@ -80,6 +79,8 @@ function checkGuess(){
 			 * fadeTo() preferred over fadeOut() because we
 			 * want the elements to continue taking up space. 
 			 */
+			$("#startOver").addClass("mdl-button--accent");
+			$("#guessButton").removeClass("mdl-button--colored");
 			$("#list").fadeTo(1000,0);
 			$("#guessCounter").fadeTo(1000,0);
 		}
@@ -96,6 +97,8 @@ function checkGuess(){
 			 */
 			if ( guessesRemaining() < 1){ 
 				msg = 'Sorry, you\'re out of guesses.';
+				$("#startOver").addClass("mdl-button--accent");
+				$("#guessButton").removeClass("mdl-button--colored");
 			}
 			else {
 				/*
@@ -209,8 +212,8 @@ function startOver() {
 	 * Sets Start Over button color back to normal because 
 	 * it could have been turned green earlier.
 	 */
-	$("#startOver").removeClass("btn-success");
-	$("#startOver").addClass("btn-default");
+	$("#startOver").removeClass("mdl-button--accent");
+	$("#guessButton").addClass("mdl-button--colored");
 }
 
 function getHint() {

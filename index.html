@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,67 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Guessing Game</title>
-    <!-- Bootstrap -->
-		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" >
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="guessinggame.png" />
+    <!-- MDL -->
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.pink-lime.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <!-- Own stylesheet -->
     <link rel="stylesheet" href="main.css">
     <!-- Google Webfonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400' rel='stylesheet' type='text/css'>
   </head>
 
-  <body>
-    <div class="container-fluid">
-      
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+  <body>      
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet"></div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
           <h1>Guess the number</h1>
-        </div> <!-- .col-md-12 -->
-      </div> <!-- .row -->
+        </div> <!-- .mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet -->
+      </div> <!-- .mdl-grid -->
 
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <input type="text" id="guessBox" placeholder='1-100' class='form-control' />
-        </div> <!-- .col-md-4 -->
-      </div> <!-- .row -->
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet"></div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
+            <div class="mdl-textfield mdl-js-textfield textfield-demo">
+              <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="guessBox" />
+              <label class="mdl-textfield__label" for="sample2">1-100</label>
+              <span class="mdl-textfield__error">Your guess needs to be a number between 1 and 100.</span>
+            </div>
+        </div> <!-- .mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet -->
+      </div> <!-- .mdl-grid -->
+      <!-- Numeric Textfield -->
 
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
-          <button type='button' class="btn btn-info" id="guessButton">
+
+      <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet"></div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
+          <!-- Accent-colored raised button with ripple -->
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" id="guessButton">
             Make a guess
           </button>
-          <button type='button' class= 'btn btn-default' id="getHint">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="getHint">
             Get a hint
           </button>
-          <button type='button' class="btn btn-default" id="startOver">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="startOver">
             Start over
           </button>
-        </div> <!-- .col-md-4 -->
-      </div> <!-- .row -->
+        </div> <!-- .mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet -->
+      </div> <!-- .mdl-grid -->
   		
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+      <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet"></div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
           <h3 id='msg'>Try any number from 1-100</h3><!--contains hot/cold higher/lower msg-->
           <h3 id='guessCounter'><span id='guessesRemaining'>5</span> guesses remaining</h3>
-        </div> <!-- .col-md-4 -->
-      </div> <!-- .row -->
+        </div> <!-- .mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet -->
+      </div> <!-- .mdl-grid -->
 
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+      <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet"></div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
           <h3 id='list'></h3><!-- container for the guesses -->
-        </div> <!-- .col-md-4 -->
-      </div> <!-- .row -->
+        </div> <!-- .mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet -->
+      </div> <!-- .mdl-grid -->
 
-      <div class="row">
-        <div class="col-md-4 col-md-offset-4">
+      <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet"></div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet">
           <h5>Made by Cristina Colón for Fullstack Academy 1507</h5>
-        </div> <!-- .col-md-4 -->
-      </div> <!-- .row -->
-
-    </div> <!-- .container-fluid -->
+        </div> <!-- .mdl-cell mdl-cell--4-col mdl-cell--8-col-tablet -->
+      </div> <!-- .mdl-grid -->
 
     <!-- JS and jQuery  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.1/material.min.js"></script>
 		<script src='guess.js'></script>
   </body>
 </html>
